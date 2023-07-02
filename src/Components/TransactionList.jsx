@@ -5,7 +5,7 @@ import { transactionContext } from '../Contexts/TransactionState'
 const TransactionList = () => {
 
     let { transactions } = useContext(transactionContext);
-
+    if(transactions.length === 0) return;
     return (
         <div>
             <h3 className='mt-4 text-2xl font-medium text-center underline mb-4'> History </h3>

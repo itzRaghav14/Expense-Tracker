@@ -1,22 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 
-let initalState = [
-    {
-        text : 'Salary',
-        amount : 20,
-        id : 1
-    },
-    {
-        text : 'Salary',
-        amount : 20,
-        id : 2
-    },
-    {
-        text : 'Salary',
-        amount : 20,
-        id : 3
-    }
-]
+let initalState = []
 
 export const transactionContext = createContext(initalState);
 
@@ -24,6 +8,11 @@ export const TransactionProvider = ({ children }) => {
 
     function transactionReducer(state, action) {
         switch(action.type) {
+            case 'ADD_TRANSACTION':
+                return {
+                    ...state,
+                    transactions : [action.payload.transaction, ...state.transactions]
+                }
             case 'DELETE_TRANSACTION':
                 return {
                     ...state,
@@ -36,6 +25,10 @@ export const TransactionProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(transactionReducer, {transactions : initalState});
 
+    const addTransaction = (transaction) => {
+        dispatch({type : 'ADD_TRANSACTION', payload : { transaction }});
+    }
+
     const deleteTransaction = (id) => {
         dispatch({type : 'DELETE_TRANSACTION', payload : { id }});
     }
@@ -43,7 +36,8 @@ export const TransactionProvider = ({ children }) => {
     return (
         <transactionContext.Provider value={{
             transactions : state.transactions,
-            deleteTransaction
+            deleteTransaction,
+            addTransaction
         }}>
             {children}
         </transactionContext.Provider>
