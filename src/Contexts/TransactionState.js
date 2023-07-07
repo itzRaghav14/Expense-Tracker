@@ -1,6 +1,19 @@
 import React, { createContext, useReducer } from 'react'
 
-let initalState = []
+let initalState = [
+    {
+        'text' : 'Gift',
+        'amount' : 5
+    },
+    {
+        'text' : 'Tax',
+        'amount' : -2
+    },
+    {
+        'text' : 'Salary',
+        'amount' : 10
+    }
+]
 
 export const transactionContext = createContext(initalState);
 

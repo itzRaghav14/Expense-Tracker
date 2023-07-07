@@ -9,6 +9,9 @@ const AddTransaction = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
+        if(textInput.current.value == '' || amountInput.current.value == '') {
+            return;
+        }
         let newTransaction = {
             text : textInput.current.value,
             amount : + amountInput.current.value,
@@ -30,9 +33,9 @@ const AddTransaction = () => {
                     </div>
                     <div>
                         <label> Please enter the amount : </label>
-                        <input type="number" ref={amountInput} placeholder='$0.00' className='py-1 px-2 bg-inherit focus:outline-none w-24 remove-webkit' />
+                        <input type="number" ref={amountInput} placeholder='$0.00' className='py-1 px-2 bg-inherit focus:outline-none w-24 remove-webkit-spin_buttons' />
                     </div>
-                    <div>
+                    <div className='flex justify-center'>
                         <button type="submit" onClick={(e) => handleSubmit(e)}> SUBMIT </button>
                     </div>
                 </div>

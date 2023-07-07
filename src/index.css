@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.remove-webkit::-webkit-outer-spin-button, .remove-webkit::-webkit-inner-spin-button {
+.remove-webkit-spin_buttons::-webkit-outer-spin-button, .remove-webkit-spin_buttons::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+/* Remove Scrollbar */
+.remove-webkit-scroll_bar::-webkit-scrollbar { /* Chrome, Safari and Opera */
+    display: none;
+}
+
+.remove-webkit-scroll_bar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
