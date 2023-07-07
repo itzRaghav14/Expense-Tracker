@@ -5,8 +5,6 @@ const IncomeExpenses = () => {
 
   const { transactions } = useContext(transactionContext);
 
-  console.log(transactions[0].amount < 0);
-
   let incomeAmount = 0;
   let expenseAmount = 0;
 

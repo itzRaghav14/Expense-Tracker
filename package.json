@@ -41,5 +41,9 @@
     "babel-preset-react-app": "^10.0.1",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2"
-  }
+  },
+  "description": "A cool website.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
