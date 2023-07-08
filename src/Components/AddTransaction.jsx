@@ -1,15 +1,16 @@
-import React, { useContext, useRef } from 'react'
-import { transactionContext } from '../Contexts/TransactionState'
+import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux';
+import { addTransaction } from '../store/transactionSlice';
 
 const AddTransaction = () => {
 
-    const { addTransaction } = useContext(transactionContext);
+    const dispatch = useDispatch();
     const textInput = useRef(null);
     const amountInput = useRef(null);
 
     function handleSubmit(e) {
         e.preventDefault();
-        if(textInput.current.value == '' || amountInput.current.value == '') {
+        if(textInput.current.value === '' || amountInput.current.value === '') {
             return;
         }
         let newTransaction = {
@@ -17,7 +18,7 @@ const AddTransaction = () => {
             amount : + amountInput.current.value,
             id : Math.floor(Math.random() * 1000000000)
         }
-        addTransaction(newTransaction);
+        dispatch(addTransaction(newTransaction));
         textInput.current.value = '';
         amountInput.current.value = '';
     }

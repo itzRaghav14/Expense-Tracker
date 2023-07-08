@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import { AiFillCloseSquare } from 'react-icons/ai';
-import { transactionContext } from "../Contexts/TransactionState";
+import { useDispatch } from "react-redux";
+import { deleteTransaction } from "../store/transactionSlice";
 
 const Transaction = ({ transaction }) => {
 
-    let { deleteTransaction } = useContext(transactionContext);
+    const dispatch = useDispatch();
     let sign = transaction.amount >= 0 ? '+' : '-';
     let transactionColor = sign === '+' ? 'text-green' : 'text-red';
 
     function handleDelete() {
-        deleteTransaction(transaction.id);
+        dispatch(deleteTransaction(transaction.id));
     }
 
     return (

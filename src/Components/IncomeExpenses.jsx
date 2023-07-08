@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { transactionContext } from '../Contexts/TransactionState'
+import React from 'react'
+import { useSelector } from 'react-redux';
 
 const IncomeExpenses = () => {
 
-  const { transactions } = useContext(transactionContext);
+  const transactions = useSelector(state => state.transactions);
 
   let incomeAmount = 0;
   let expenseAmount = 0;
@@ -12,10 +12,7 @@ const IncomeExpenses = () => {
     if(transaction.amount > 0) incomeAmount += transaction.amount;
     else expenseAmount += transaction.amount;
   }
-
-  console.log(incomeAmount);
-  console.log(expenseAmount);
-
+  
   return (
     <div id='income-expense-container' className='flex h-[4.5rem] bg-white border border-black mt-4' style={{backgroundColor : 'white'}}>
 			<div className='w-32 px-4 py-2 flex flex-col justify-center items-center border-r border-black'>

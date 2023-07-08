@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { transactionContext } from '../Contexts/TransactionState'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Balance = () => {
 
-  const { transactions } = useContext(transactionContext)
+  const transactions = useSelector(state => state.transactions);
   let balance = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
   let sign = balance < 0 ? '-' : '';
 

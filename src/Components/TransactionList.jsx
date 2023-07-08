@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Transaction from './Transaction'
-import { transactionContext } from '../Contexts/TransactionState'
+import { useSelector } from 'react-redux'
 
 const TransactionList = () => {
 
-    let { transactions } = useContext(transactionContext);
+    const transactions = useSelector(state => state.transactions);
+
     if(transactions.length === 0) return;
+    
     return (
         <div>
             <h3 className='mt-4 text-2xl font-medium text-center underline mb-4'> History </h3>
